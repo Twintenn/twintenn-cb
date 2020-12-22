@@ -21,7 +21,9 @@
   box-sizing: border-box;
 }
 
-body {
+body { background-color: transparent;}
+
+#fake-body {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,7 +33,6 @@ body {
   align-content: center;
   justify-content: center;
 }
-
 
 h1
 {
@@ -60,7 +61,6 @@ a {
   margin: 100px;
   border: 1px solid black;
   background: lightgray;
-  width: 95vw;
   position: relative;
   display: flex;
   align-content: center;
@@ -70,6 +70,12 @@ a {
   padding: 15px;
   border: @image-border-width solid @image-border;
   border-radius: @image-border-radius;
+  margin: 30px 0px 0px -100px;
+}
+
+body #cb-container-outer
+{
+  margin: 100px 0 0 0;
 }
 
 #cb-container-inner
@@ -85,7 +91,7 @@ a {
 .image-bio
 {
   margin: 10px;
-  padding: 25px;
+  padding: 15px;
   background: linear-gradient(@image-gradient-degree, @image-gradient-string);
   border: @image-border-width solid @image-border;
   border-radius: @image-border-radius;
@@ -107,7 +113,7 @@ a {
 .content-outer
 {
   background: linear-gradient(@content-gradient-degree, @decoration-border-gradient-string);
-  padding: 25px;
+  padding: 15px;
   border: @image-border-width solid @image-border;
   border-radius: 80px;
   display: inline-block;
@@ -179,7 +185,7 @@ a {
 .content-header-outer
 {
   position: relative;
-  margin-top: -160px;
+  margin-top: -140px;
   margin-left: -50px;
   margin-bottom: -30px;
 }
@@ -197,10 +203,32 @@ a {
   text-align: right;
 }
 
+#bio-title-header-inner
+{
+  background: transparent url("https://hcti.io/v1/image/1faaabe0-c148-4339-bd63-8171a390e840") no-repeat;
+  background-size: contain;
+}
+#bio-title-header-inner h1
+{
+  visibility: hidden;
+}
+
 #top_tippers-title-header-outer
 {
-  transform: translateZ(250px) perspective(300px) rotateY(-10deg) rotateX(15deg);
+  transform: translateZ(50px) perspective(500px) rotateY(-15deg) rotateX(15deg);
   text-align: left;
+  margin-top: -140px;
+  margin-left: -50px;
+}
+#top_tippers-title-header-inner
+{
+  background: transparent url("https://hcti.io/v1/image/aba02a36-94e7-44c8-be9d-3339cd522374") no-repeat;
+  background-size: contain;
+}
+#top_tippers-title-header-inner h1
+{
+  visibility: hidden;
+  white-space: nowrap;
 }
 
 #bio
@@ -218,7 +246,12 @@ a {
 
 #goals-title-header-inner
 {
-
+  background: transparent url("https://hcti.io/v1/image/86e772c9-4db6-4eb4-bb5a-0f29aa707f5d") no-repeat;
+  background-size: contain;
+}
+#goals-title-header-inner h1
+{
+  visibility: hidden;
 }
 
 #likes-title-header-outer
@@ -230,7 +263,12 @@ a {
 
 #likes-title-header-inner
 {
-
+  background: transparent url("https://hcti.io/v1/image/7a9330df-d3ef-4a34-8af1-201ffc609407") no-repeat;
+  background-size: contain;
+}
+#likes-title-header-inner h1
+{
+  visibility: hidden;
 }
 
 #sexuality-title-header-outer
@@ -243,7 +281,12 @@ a {
 
 #sexuality-title-header-inner
 {
-
+  background: transparent url("https://hcti.io/v1/image/7ba23bbc-fbf2-49fb-b0c0-42b3ea94b66d") no-repeat;
+  background-size: contain;
+}
+#sexuality-title-header-inner h1
+{
+  visibility: hidden;
 }
 
 #header-welcome-outer
@@ -260,4 +303,11 @@ a {
   // border-radius: @image-border-radius;
   // background: linear-gradient(@header-welcome-inner-gradient-degree, @header-welcome-inner-gradient-string);
   font-size: 64px;
+  background: transparent url("https://hcti.io/v1/image/87d88e03-fa18-45e7-90af-240e4ec2cd02") no-repeat;
+  background-size: contain;
+}
+
+#header-welcome-inner h1
+{
+  visibility: hidden;
 }
