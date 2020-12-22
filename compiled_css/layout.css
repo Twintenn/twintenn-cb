@@ -149,7 +149,7 @@ body #cb-container-outer {
 #top_tippers-title-header-outer {
   transform: translateZ(50px) perspective(500px) rotateY(-15deg) rotateX(15deg);
   text-align: left;
-  margin-top: -140px;
+  margin-top: -120px;
   margin-left: -50px;
 }
 #top_tippers-title-header-inner {
