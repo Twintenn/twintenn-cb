@@ -16,45 +16,16 @@
 
 @content-gradient-degree: 165deg;
 
+@cancel-cb-br-height: 16px;
+
+/******************** Defaults / Unset ********************/
+
 *, *:before, *:after
 {
   box-sizing: border-box;
 }
 
-body { background-color: transparent;}
-
-// #fake-body {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   margin: 0px;
-//   padding: 0px;
-//   cursor: pointer;
-//   align-content: center;
-//   justify-content: center;
-// }
-
-p:not(.content)
-{
-  display: none;
-}
-
-p.content
-{
-  display: inline;
-}
-
-h1
-{
-  margin: 0;
-}
-
-h2
-{
-  margin: 0;
-}
-
-h3
+h1, h2, h3
 {
   margin: 0;
 }
@@ -68,8 +39,8 @@ a {
 
 ul
 {
-  line-height: 1.5em;
-  padding-block-start: unset;
+  line-height: unset;
+  padding-block-start: 0px;
   padding-block-end: 0px;
   padding-inline-start: 0px;
   padding-inline-end: 0px;
@@ -81,69 +52,62 @@ ul
   inset-block-end: 0;
   inset-inline-start: 0;
   inset-inline-end: 0;
-  padding: 0 15px 15px 15px;
 }
 
-ul.content
+.flex-wrapper
 {
-  line-height: 2em;
-  padding-inline-start: 0px;
+  margin-top: -@cancel-cb-br-height;
 }
 
-br
+
+/******************** Default Layout ********************/
+
+.cb-container // All containers
 {
-  display: none;
+
 }
 
-#cb-container-outer
+.cb-container-outer // All outer containers
 {
-  // margin: 100px;
-  border: 1px solid black;
-  // background: lightgray;
+}
+
+.cb-container-inner // All inner containers
+{
+  margin-top: -16px; // Cancel space from <br> inserted by CB
+  padding: 30px 15px 15px 15px;
+}
+
+.flex-wrapper.image
+{
+}
+
+.flex-wrapper.content
+{
+}
+
+/******************** Root Layout (Nested in CB About Me) ********************/
+
+#root-container-outer
+{
   position: relative;
   display: flex;
-  // align-content: center;
-  // justify-content: center;
   flex-direction: column;
   background: linear-gradient(@decoration-border-gradient-degree, @decoration-border-gradient-string);
-  padding: 15px;
   border: @image-border-width solid @image-border;
   border-radius: @image-border-radius;
-  margin: 80px 0px 0px -150px; // For CB nested context
+  margin: 80px 0px 0px -150px; // Adjust to align below About Me with space for Welcome header
+  padding: 15px;
+  min-width: 1125px;
 }
 
-// body #cb-container-outer
-// {
-//   margin: 100px 0 0 0;
-// }
-
-#cb-container-inner
+#root-container-inner
 {
-  border: 1px solid blue;
   background: hsla(0, 0%, 75%, 75%);
   border: @image-border-width solid @image-border;
   border-radius: @image-border-radius;
-  // display: flex;
-  // flex-direction: column;
-  padding-inline-start: 20px;
 }
 
-.image-bio
-{
-  // margin: 10px;
-  padding: 15px;
-  background: linear-gradient(@image-gradient-degree, @image-gradient-string);
-  border: @image-border-width solid @image-border;
-  border-radius: @image-border-radius;
-  // display: inline-block;
-}
-
-.image-bio img
-{
-  border: @image-border-width solid @image-border;
-  border-radius: @image-border-radius;
-  margin: -20px 0 -10px 0;
-}
+/******************** Row Layout ********************/
 
 .content
 {
@@ -152,13 +116,19 @@ br
   // margin-top: 20px;
 }
 
+.flex-wrapper.content-wrapper,
+.flex-wrapper.image-wrapper
+{
+  padding: 10px;
+}
+
 .content-outer
 {
+  position: relative;
   background: linear-gradient(@content-gradient-degree, @decoration-border-gradient-string);
-  padding: 15px;
+  padding: 0px 15px;
   border: @image-border-width solid @image-border;
-  border-radius: 80px;
-  // display: inline-block;
+  border-radius: 40px;
 }
 
 .content-inner
@@ -167,196 +137,100 @@ br
   border: @image-border-width solid @image-border;
   border-radius: 40px;
   background: hsla(0, 0%, 75%, 45%);
-  padding: 80px 50px 20px 50px;
-  font-size: 32px;
-  // display: inline-block;
-  margin: -20px 0;
+  margin-top: -@cancel-cb-br-height;
+  padding: 0px 15px 0px 20px;
 }
 
-.flex-wrapper
+.section-header
 {
-  padding: 10px;
+  position: absolute;
+  height: 70px;
+  top: -(25px + @cancel-cb-br-height);
+}
+
+.photo
+{
+  padding: 0px 15px 15px 15px;
+  background: linear-gradient(@image-gradient-degree, @image-gradient-string);
+  border: @image-border-width solid @image-border;
+  border-radius: @image-border-radius;
+}
+
+.photo img
+{
+  border: @image-border-width solid @image-border;
+  border-radius: @image-border-radius;
+  max-width: 400px;
+}
+
+/******************** Header Welcome Title ********************/
+
+#header-welcome
+{
+  position: absolute;
+  height: 125px;
+  top: -(54px + @cancel-cb-br-height);
+  left: 4em;
+}
+
+/******************** Bio Row ********************/
+
+#bio-section-header
+{
+  // transform: translateZ(250px) perspective(600px) rotateY(-15deg) rotateX(5deg);
 }
 
 #blowing_smoke
 {
-  transform: perspective(800px) rotateY(15deg) rotateX(10deg);
-  margin-left: 30px;
-  // margin-top: -50px;
-  // margin-bottom: 100px;
+  // transform: perspective(800px) rotateY(15deg) rotateX(10deg);
 }
+
+/******************** Goals Row ********************/
 
 #my_goals
 {
-  margin-right: 20px;
-  // margin-right: 40px;
-  // margin-top: -170px;
-  transform: translateZ(50px) perspective(800px) rotateY(-15deg) rotateX(-5deg);
+  // transform: translateZ(50px) perspective(800px) rotateY(-15deg) rotateX(-5deg);
 }
 
-#laying_with_cats
+#goals-section-header
+{
+  // transform: translateZ(250px) perspective(600px) rotateY(10deg) rotateX(5deg);
+}
+
+/******************** Likes Row ********************/
+
+#likes-section-header
+{
+  // transform: translateZ(250px) perspective(600px) rotateY(10deg) rotateX(5deg);
+}
+
+#lying_with_cats
 {
   // margin-top: 70px;
   // margin-left: 40px;
   transform: perspective(700px) rotateY(15deg) rotateX(-15deg);
 }
 
+/******************** Sexuality Row ********************/
+
+#sexuality-section-header
+{
+  // transform: translateZ(250px) perspective(600px) rotateY(10deg) rotateX(5deg);
+}
+
 #face_closeup_goofy
 {
-  transform: perspective(800px) rotateY(-15deg) rotateX(-5deg);
+  // transform: perspective(800px) rotateY(-15deg) rotateX(-5deg);
+}
+
+/******************** Top-Tippers Row ********************/
+
+#top_tippers-section-header
+{
+  // transform: scale(1.25) translateZ(50px) perspective(500px) rotateY(-15deg) rotateX(15deg);
 }
 
 #lifting_shirt_happy_trail
 {
-  // margin-top: 90px;
-  margin-left: 40px;
-  transform: perspective(600px) rotateY(15deg) rotateX(-10deg);
-}
-
-.header-inner
-{
-  margin: 10px;
-  padding: 30px;
-  font-family: 'Frijole', cursive;
-  font-size: 46px;
-  color: @header-font-color;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-
-}
-
-.content-header-outer
-{
-  position: relative;
-  // margin-top: -180px;
-  // margin-left: -50px;
-  // margin-bottom: -30px;
-  margin: -260px 10px -300px 0px;
-}
-.content-header-inner
-{
-  // padding: 0px;
-}
-
-#header-welcome
-{
-  position: relative;
-  margin-top: -140px;
-  margin-left: 60px;
-  margin-bottom: -300px;
-}
-#header-welcome-outer
-{
-  transform: perspective(800px) rotateY(10deg) rotateX(-5deg);
-  // border: @image-border-width solid @image-border;
-  // border-radius: @image-border-radius;
-  // background: linear-gradient(@image-gradient-degree, @decoration-border-gradient-string);
-  margin: -80px 10px 0px 20px;
-}
-#header-welcome-inner
-{
-  // border: @image-border-width solid @image-border;
-  // border-radius: @image-border-radius;
-  // background: linear-gradient(@header-welcome-inner-gradient-degree, @header-welcome-inner-gradient-string);
-  font-size: 64px;
-  background: transparent url("https://hcti.io/v1/image/87d88e03-fa18-45e7-90af-240e4ec2cd02") no-repeat;
-  background-size: contain;
-}
-#header-welcome-inner h1
-{
-  visibility: hidden;
-}
-
-#bio-title-header-outer
-{
-  transform: translateZ(250px) perspective(600px) rotateY(-15deg) rotateX(5deg);
-  text-align: right;
-}
-
-#bio-title-header-inner
-{
-  background: transparent url("https://hcti.io/v1/image/1faaabe0-c148-4339-bd63-8171a390e840") no-repeat;
-  background-size: contain;
-}
-#bio-title-header-inner h1
-{
-  visibility: hidden;
-}
-
-#top_tippers-title-header-outer
-{
-  transform: scale(1.25) translateZ(50px) perspective(500px) rotateY(-15deg) rotateX(15deg);
-  text-align: left;
-  // margin-top: -120px;
-  // margin-left: -50px;
-  margin: -250px 10px -300px -40px;
-}
-#top_tippers-title-header-inner
-{
-  background: transparent url("https://hcti.io/v1/image/aba02a36-94e7-44c8-be9d-3339cd522374") no-repeat;
-  background-size: contain;
-}
-#top_tippers-title-header-inner h1
-{
-  visibility: hidden;
-  white-space: nowrap;
-}
-
-#bio
-{
-  position: relative;
-  align-self: top;
-}
-
-#goals-title-header-outer
-{
-  transform: translateZ(250px) perspective(600px) rotateY(10deg) rotateX(5deg);
-  position: relative;
-  // margin-top: -400px;
-}
-
-#goals-title-header-inner
-{
-  background: transparent url("https://hcti.io/v1/image/86e772c9-4db6-4eb4-bb5a-0f29aa707f5d") no-repeat;
-  background-size: contain;
-}
-#goals-title-header-inner h1
-{
-  visibility: hidden;
-}
-
-#likes-title-header-outer
-{
-  transform: translateZ(250px) perspective(600px) rotateY(10deg) rotateX(5deg);
-  position: relative;
-  // margin-top: -400px;
-}
-
-#likes-title-header-inner
-{
-  background: transparent url("https://hcti.io/v1/image/7a9330df-d3ef-4a34-8af1-201ffc609407") no-repeat;
-  background-size: contain;
-}
-#likes-title-header-inner h1
-{
-  visibility: hidden;
-}
-
-#sexuality-title-header-outer
-{
-  transform: translateZ(250px) perspective(600px) rotateY(10deg) rotateX(5deg);
-  // position: relative;
-  // margin-left: -20px;
-  // margin-top: -400px;
-  margin: -320px 10px -230px 0px;
-}
-
-#sexuality-title-header-inner
-{
-  background: transparent url("https://hcti.io/v1/image/7ba23bbc-fbf2-49fb-b0c0-42b3ea94b66d") no-repeat;
-  background-size: contain;
-}
-#sexuality-title-header-inner h1
-{
-  visibility: hidden;
+  // transform: perspective(600px) rotateY(15deg) rotateX(-10deg);
 }
